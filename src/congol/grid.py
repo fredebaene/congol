@@ -119,7 +119,7 @@ class LifeGrid:
                 and self._goi[cell] == 3
             ):
                 self._reproductive_cells.add(cell)
-            self._number_of_reproductive_cells = len(self._reproductive_cells)
+        self._number_of_reproductive_cells = len(self._reproductive_cells)
 
     def show_as_string(self, bounding_box):
         pass
