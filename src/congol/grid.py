@@ -49,9 +49,9 @@ class LifeGrid:
         # values for each cell represent the number of living neighboring 
         # cells.
         self._goi = {}
-        for x_coord in range(self._goi_bounds["min_x"], self._goi_bounds["max_x"] + 1):
-            for y_coord in range(self._goi_bounds["min_y"], self._goi_bounds["max_y"] + 1):
-                self._goi[(x_coord, y_coord)] = 0
+        for x in range(self._goi_bounds["min_x"], self._goi_bounds["max_x"] + 1):
+            for y in range(self._goi_bounds["min_y"], self._goi_bounds["max_y"] + 1):
+                self._goi[(x, y)] = 0
 
     def _get_bounds(self) -> None:
         """
