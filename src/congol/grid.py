@@ -74,13 +74,17 @@ class LifeGrid:
                 if (x + x_delta, y + y_delta) in self.pattern.alive_cells:
                     self._goi[(x, y)] += 1
 
-    def _count_cells_next_generation(self) -> None:
+    def _list_cells_next_generation(self) -> None:
         """
-        This method lists and counts the dying cells, the surviving cells, and 
-        the reproductive cells. The dying cells are the currently living cells 
-        that will die while the surviving cells are the currently living cells 
-        that will keep on living. The reproductive cells are the currently 
-        non-living cells that will become alive.
+        This method lists the dying cells, the surviving cells, and the 
+        reproductive cells:
+        
+        - dying cells: the living cells that will die
+        - surviving cells:  the living cells that will keep on living
+        - reproductive cells: the dead cells that will become alive.
+
+        The number of cells per subgroup can be calculated using the 
+        `._count_cells_next_generation()` method.
         """
         # Initialize empty sets that will contain the different subgroups of 
         # cells
@@ -107,6 +111,11 @@ class LifeGrid:
             ):
                 self._reproductive_cells.add(cell)
 
+    def _count_cells_next_generation(self) -> None:
+        """
+        This method counts the number of cells per subgroup for the next 
+        generation.
+        """
         # Count the number of cells per subgroup
         self._number_of_dying_cells = len(self._dying_cells)
         self._number_of_surviving_cells = len(self._surviving_cells)
