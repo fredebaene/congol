@@ -30,9 +30,7 @@ class LifeGrid:
         """
         self._get_grid_of_interest()
         self._count_living_neighbors()
-        self._count_dying_cells()
-        self._count_surviving_cells()
-        self._count_reproductive_cells()
+        self._count_cells_next_generation()
         self.pattern.alive_cells = (
             self._surviving_cells.union(self._reproductive_cells)
         )
@@ -76,49 +74,42 @@ class LifeGrid:
                 if (x + x_delta, y + y_delta) in self.pattern.alive_cells:
                     self._goi[(x, y)] += 1
 
-    def _count_dying_cells(self) -> None:
+    def _count_cells_next_generation(self) -> None:
         """
-        This method lists and counts the living cells in the current grid of 
-        interest that will die. A living cell dies if it has less than two 
-        (underpopulation) or more than three (overpopulation) living 
-        neighbors.
+        This method lists and counts the dying cells, the surviving cells, and 
+        the reproductive cells. The dying cells are the currently living cells 
+        that will die while the surviving cells are the currently living cells 
+        that will keep on living. The reproductive cells are the currently 
+        non-living cells that will become alive.
         """
+        # Initialize empty sets that will contain the different subgroups of 
+        # cells
         self._dying_cells = set()
+        self._surviving_cells = set()
+        self._reproductive_cells = set()
+
+        # Assess the status for each cell in the current grid of interest in 
+        # the next generation
         for cell in self._goi.keys():
             if (
                 cell in self.pattern.alive_cells
                 and not self._goi[cell] in {2, 3}
             ):
                 self._dying_cells.add(cell)
-        self._number_of_dying_cells = len(self._dying_cells)
-
-    def _count_surviving_cells(self) -> None:
-        """
-        This method lists and counts the surviving cells in the current grid 
-        of interest. Living cells survive if they have two or three living 
-        neighbors.
-        """
-        self._surviving_cells = set()
-        for cell in self._goi.keys():
-            if (
+            elif (
                 cell in self.pattern.alive_cells
                 and self._goi[cell] in {2, 3}
             ):
                 self._surviving_cells.add(cell)
-        self._number_of_surviving_cells = len(self._surviving_cells)
-
-    def _count_reproductive_cells(self) -> None:
-        """
-        This method lists and counts the non-living cells that become alive. A 
-        non-living cell becomes alive if it has exactly three living neigbors.
-        """
-        self._reproductive_cells = set()
-        for cell in self._goi.keys():
-            if (
+            elif (
                 not cell in self.pattern.alive_cells
                 and self._goi[cell] == 3
             ):
                 self._reproductive_cells.add(cell)
+
+        # Count the number of cells per subgroup
+        self._number_of_dying_cells = len(self._dying_cells)
+        self._number_of_surviving_cells = len(self._surviving_cells)
         self._number_of_reproductive_cells = len(self._reproductive_cells)
 
     def show_as_string(self, bounding_box):
@@ -127,5 +118,5 @@ class LifeGrid:
     def __str__(self):
         return (
             f"{self.pattern.name}:\n"
-            f"  -> living cells: {sorted(self.pattern.alive_cells)}"
+            f"-> living cells: {sorted(self.pattern.alive_cells)}"
         )
