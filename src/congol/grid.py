@@ -30,6 +30,7 @@ class LifeGrid:
         """
         self._get_grid_of_interest()
         self._count_living_neighbors()
+        self._list_cells_next_generation()
         self._count_cells_next_generation()
         self.pattern.alive_cells = (
             self._surviving_cells.union(self._reproductive_cells)
