@@ -9,14 +9,7 @@ from pattern import Pattern
 
 
 _DELTAS = {
-    "top_left": (-1, -1),
-    "top_center": (0, -1),
-    "top_right": (1, -1),
-    "center_left": (-1, 0),
-    "center_right": (1, 0),
-    "bottom_left": (-1, 1),
-    "bottom_center": (0, 1),
-    "bottom_right": (1, 1),
+    (-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)
 }
 
 class LifeGrid:
@@ -78,7 +71,7 @@ class LifeGrid:
         cell in the grid of interest.
         """
         for x, y in self._goi.keys():
-            for x_delta, y_delta in _DELTAS.values():
+            for x_delta, y_delta in _DELTAS:
                 if (x + x_delta, y + y_delta) in self.pattern.alive_cells:
                     self._goi[(x, y)] += 1
 
