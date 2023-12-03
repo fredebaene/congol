@@ -12,6 +12,7 @@ _DELTAS = {
     (-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)
 }
 
+
 class LifeGrid:
     def __init__(self, pattern: Pattern):
         self.pattern = pattern
