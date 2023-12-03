@@ -5,7 +5,7 @@ generation.
 """
 
 
-from pattern import Pattern
+from congol.pattern import Pattern
 
 
 _DELTAS = {
