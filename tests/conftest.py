@@ -2,6 +2,7 @@ import pytest
 from pathlib import Path
 import tomllib
 from congol.pattern import Pattern
+from congol.grid import LifeGrid
 
 
 @pytest.fixture
@@ -19,3 +20,8 @@ def blinker_pattern(test_patterns):
             tuple(cell) for cell in test_patterns["Blinker"]["alive_cells"]
         }
     )
+
+
+@pytest.fixture
+def blinker_grid(blinker_pattern):
+    return LifeGrid(pattern=blinker_pattern)
