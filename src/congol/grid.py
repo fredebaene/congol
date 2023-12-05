@@ -60,8 +60,8 @@ class LifeGrid:
     def _get_bounds(self) -> None:
         """
         This method gets the minimum and maximum x and y coordinates of the 
-        current set of living cells. These minimum and maximum values can be 
-        considered the bounds of the grid of interest.
+        current set of living cells. These values are used to compute the 
+        boundaries of the grid of interest.
         """
         self._goi_bounds = {
             "min_x": min([x for x, y in self.pattern.alive_cells]) - 1,
