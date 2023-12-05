@@ -6,6 +6,7 @@ generation.
 
 
 from congol.pattern import Pattern
+from typing import Optional
 
 
 _DELTAS = {
