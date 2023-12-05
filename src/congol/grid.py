@@ -43,7 +43,8 @@ class LifeGrid:
         """
         This method creates a dictionary in which the keys are tuples that 
         represent the coordinates of the cells in the grid of interest. The 
-        values are the number of living neighbors each living cell has.
+        values are the number of living neighbors each cell in the grid of 
+        interest has.
         """
         # Get the bounds of the grid of interest
         self._get_bounds()
