@@ -11,6 +11,8 @@ from congol.pattern import Pattern
 _DELTAS = {
     (-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)
 }
+_DEAD_CELL = "‧"
+_ALIVE_CELL = "♥"
 
 
 class LifeGrid:
