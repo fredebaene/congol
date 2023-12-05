@@ -125,8 +125,37 @@ class LifeGrid:
         self._number_of_surviving_cells = len(self._surviving_cells)
         self._number_of_reproductive_cells = len(self._reproductive_cells)
 
-    def show_as_string(self, bounding_box):
-        pass
+    def get_string_representation(self, bounds: Optional[tuple] = None) -> str:
+        """
+        This method creates a string representation of the life grid, with 
+        different cell shapes for living and dead cells.
+
+        Returns:
+            str: a string representation of the life grid.
+        """
+        # Get the bounds of the life grid to be represented as a string
+        if bounds is None:
+            self._get_bounds()
+            min_x, max_x = self._goi_bounds["min_x"], self._goi_bounds["max_x"]
+            min_y, max_y = self._goi_bounds["min_y"], self._goi_bounds["max_y"]
+        else:
+            min_x, max_x, min_y, max_y = bounds
+
+        # Initialize an empty string and start constructing it.
+        life_grid = ""
+        
+        for i in range(min_x, max_x + 1):
+            life_grid_row = ""
+            for j in range(min_y, max_y + 1):
+                cell = (i, j)
+                if cell in self.pattern.alive_cells:
+                    life_grid_row += _ALIVE_CELL + " "
+                else:
+                    life_grid_row += _DEAD_CELL + " "
+            life_grid_row += "\n"
+            life_grid += life_grid_row
+
+        return life_grid
 
     def __str__(self):
         return (
