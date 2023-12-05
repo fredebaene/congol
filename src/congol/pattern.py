@@ -16,7 +16,7 @@ except ImportError:
 
 
 class Pattern:
-    def __init__(self, name: str, alive_cells: set[tuple[int, int]]):
+    def __init__(self, name: str, alive_cells: set[tuple[int, int]]) -> None:
         self.name = name
         self.alive_cells = alive_cells
 
