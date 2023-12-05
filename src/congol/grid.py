@@ -141,7 +141,8 @@ class LifeGrid:
         else:
             min_x, max_x, min_y, max_y = bounds
 
-        # Initialize an empty string and start constructing it.
+        # Initialize an empty string representing a life grid and start 
+        # constructing the life grid
         life_grid = ""
         
         for i in range(min_x, max_x + 1):
