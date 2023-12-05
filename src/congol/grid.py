@@ -20,7 +20,7 @@ class LifeGrid:
     def __init__(self, pattern: Pattern):
         self.pattern = pattern
 
-    def evolve(self):
+    def evolve(self) -> None:
         """
         This method enables a life pattern to evolve to the next generation 
         taking into account the following rules:
