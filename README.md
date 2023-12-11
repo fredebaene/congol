@@ -5,7 +5,12 @@ This project is a Python implementation of Conway's Game of Life.
 ## The Game
 
 This project is a Python implementation of Conway's Game of Life. The game 
-shows the evolution of the life of cells in a grid.
+shows the evolution of the life of cells in a grid. A collection of living 
+cells forms a pattern. The cells evolve as follows:
+
+- living cells die if they have less than 2 or more than 3 living neighbors
+- living cells keep on living if they have 2 or 3 living neighbors
+- dead cells become alive if they have exactly 3 living neighbors.
 
 ## Installation
 
