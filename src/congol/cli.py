@@ -1,3 +1,9 @@
+"""
+This module implements the function required to parse the command line 
+arguments specified by the user.
+"""
+
+
 import argparse
 from congol.pattern import Pattern
 from congol import views, __version__
