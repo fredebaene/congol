@@ -11,7 +11,7 @@ from congol import pattern, views, __version__
 def get_command_line_args() -> argparse.Namespace:
     """
     This function parses the command line arguments specified by the user and 
-    returns a namespace containg these arguments
+    returns a namespace containg these arguments.
 
     Returns:
         argparse.Namespace: the namespace with the command line arguments 
