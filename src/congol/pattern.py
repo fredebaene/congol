@@ -15,13 +15,19 @@ except ImportError:
     import tomli as tomllib
 
 
+_PATTERNS_FILE = Path(__file__).parent / "patterns.toml"
+
+
 class Pattern:
     def __init__(self, name: str, alive_cells: set[tuple[int, int]]) -> None:
         self.name = name
         self.alive_cells = alive_cells
 
     @classmethod
-    def from_toml(cls, file_path: Union[str, Path], name: str):
+    def from_toml(
+            cls,
+            name: str,
+            file_path: Union[str, Path] = _PATTERNS_FILE):
         """
         This method returns an instance of `Pattern`. The life pattern used to 
         instantiate an object is read from a TOML file listing one or more 
@@ -45,7 +51,8 @@ class Pattern:
         )
 
     @staticmethod
-    def read_patterns_from_toml(file_path: Union[str, Path]) -> dict:
+    def read_patterns_from_toml(
+            file_path: Union[str, Path] = _PATTERNS_FILE) -> dict:
         """
         This method reads the life patterns from a TOML file and returns a 
         dictionary with the life patterns.
