@@ -1,9 +1,6 @@
 # ConGoL
 
-This project is a Python implementation of Conway's game of life. This game 
-is implemented with the help of the following source:
-
-https://realpython.com/conway-game-of-life-python/
+This project is a Python implementation of Conway's game of life.
 
 ## The Game
 
