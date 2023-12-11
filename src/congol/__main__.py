@@ -2,6 +2,7 @@ import sys
 from congol import pattern, views
 from congol.cli import get_command_line_args
 
+
 def main() -> None:
     args = get_command_line_args()
     View = getattr(views, args.view)
@@ -14,6 +15,7 @@ def main() -> None:
             pattern.Pattern.from_toml(name=args.pattern),
             args
         )
+
 
 def _show_pattern(View, pattern, args):
     try:
