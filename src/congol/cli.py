@@ -5,8 +5,7 @@ arguments specified by the user.
 
 
 import argparse
-from congol.pattern import Pattern
-from congol import views, __version__
+from congol import pattern, views, __version__
 
 
 def get_command_line_args() -> argparse.Namespace:
@@ -32,7 +31,7 @@ def get_command_line_args() -> argparse.Namespace:
         "-p",
         "--pattern",
         default="Blinker",
-        choices=[k for k, v in Pattern.read_patterns_from_toml().items()],
+        choices=[k for k, v in pattern.Pattern.read_patterns_from_toml().items()],
         help="choose a seed to start the game (default: %(default)s)",
     )
     parser.add_argument(
