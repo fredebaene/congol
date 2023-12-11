@@ -65,5 +65,23 @@ class Pattern:
         """
         if isinstance(file_path, str): file_path = Path(file_path)
         return tomllib.loads(file_path.read_text(encoding="utf-8"))
-        
-        return tomllib.loads(file_path.read_text(encoding="utf-8"))
+    
+
+def instantiate_all_patterns(
+        file_path: Union[str, Path] = _PATTERNS_FILE) -> list:
+    """
+    This function returns a list of `Pattern` instances for every pattern 
+    found in a particular TOML file.
+
+    Args:
+        file_path (Union[str, Path], optional): file path to the TOML file 
+            listing the life patterns.
+
+    Returns:
+        list: list with `Pattern` instances.
+    """
+    patterns = Pattern.read_patterns_from_toml(file_path=file_path)
+    return [
+        Pattern(name, {tuple(cell) for cell in patterns[name]["alive_cells"]})
+        for name in patterns.keys()
+    ]
