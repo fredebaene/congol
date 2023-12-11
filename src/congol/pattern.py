@@ -44,7 +44,6 @@ class Pattern:
             Pattern: an instance of `Pattern`.
         """
         if isinstance(file_path, str): file_path = Path(file_path)
-
         patterns = cls.read_patterns_from_toml(file_path=file_path)
         return cls(
             name, {tuple(cell) for cell in patterns[name]["alive_cells"]}
@@ -65,5 +64,6 @@ class Pattern:
             dict: a dictionary containing all the life patterns.
         """
         if isinstance(file_path, str): file_path = Path(file_path)
+        return tomllib.loads(file_path.read_text(encoding="utf-8"))
         
         return tomllib.loads(file_path.read_text(encoding="utf-8"))
