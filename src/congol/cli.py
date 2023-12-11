@@ -1,6 +1,6 @@
 import argparse
 from congol.pattern import Pattern
-from congol import views
+from congol import views, __version__
 
 
 def get_command_line_args() -> argparse.Namespace:
@@ -17,6 +17,11 @@ def get_command_line_args() -> argparse.Namespace:
         description="a Python implementation of Conway's Game of Life"
     )
 
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s v{__version__}"
+    )
     parser.add_argument(
         "-p",
         "--pattern",
