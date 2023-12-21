@@ -1,3 +1,4 @@
+from pathlib import Path
 import pytest
 from congol.pattern import Pattern
 
