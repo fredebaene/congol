@@ -16,7 +16,7 @@ def test_pattern_initialization(blinker_pattern):
 def test_reading_patterns_from_toml(_PATTERNS_FILE):
     expected_res = {"Blinker": {"alive_cells": [[2, 1], [2, 2], [2, 3]]}}
     observed_res = Pattern.read_patterns_from_toml(_PATTERNS_FILE)
-    assert expected_res == observed_res
+    assert observed_res == expected_res
 
 
 def test_from_toml_constructor(_PATTERNS_FILE, blinker_pattern):
